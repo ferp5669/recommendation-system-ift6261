@@ -1,0 +1,55 @@
+<nav class="navbar" role="navigation" aria-label="main navigation" style="background-image: linear-gradient(to right, #8acda4 , #52c2c0)">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img src="https://upload.wikimedia.org/wikipedia/en/4/4b/Universite_de_Montreal_logo.svg">
+        </a>
+
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item">
+                <strong>Most Popular</strong>
+            </a>
+
+            <a class="navbar-item">
+                <strong>All</strong>
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    <strong>Account</strong>
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="{{ url_for('login') }}">
+                        Login
+                    </a>
+                    <a class="navbar-item">
+                        My Recommendations
+                    </a>
+                    <a class="navbar-item">
+                        My Liked
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href="{{ url_for('logout') }}">
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item is-centered">
+                <div class="control is-centered">
+                    <form action="">
+                        <input class="input is-rounded is-medium" type="text" placeholder="Search for a movie"/>
+                        <span class="icon is-medium is-left">
+            <i class="fas fa-magnifying-glass"></i>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

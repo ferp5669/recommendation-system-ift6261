@@ -1,0 +1,63 @@
+{% include 'includes/navbar.html' %}
+
+<div class="container">
+    <div class="columns">
+        <div class="column is-one-third">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image">
+                        <img src="http://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="{{ movie['title'] }}">
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <h1 class="title">{{ movie['title'] }}</h1>
+            <div class="tags are-medium">
+                {% for genre in movie['genres'] %}
+                    <span class="tag {{ genre_colors[genre['name']] }}">{{ genre['name'] }}</span>
+                {% endfor %}</div>
+
+
+            <hr>
+            <div class="content">
+                <p><strong>Plot Overview:</strong></p>
+                <p>{{ movie['overview'] }}</p>
+                <hr>
+                <p><strong>Release Date:</strong> {{ movie['release_date'] }}</p>
+                <p><strong>Vote Average:</strong> {{ movie['vote_average'] }}/10</p>
+                <p><strong>Vote Count:</strong> {{ movie['vote_count'] }} users.</p>
+                <p><strong>Runtime:</strong> {{ movie['runtime'] }} minutes.</p>
+            </div>
+            <div class="is-flex is-justify-content-center">
+                <input class="button is-primary" type="submit" value="Rate this movie">
+            </div>
+         <hr>
+
+            <div>
+                <h2 class="subtitle">Related Movies:</h2>
+                <div class="columns is-multiline">
+                    {% for related_movie in related_movies %}
+                        <div class="column is-one-quarter">
+                            <div class="card">
+                                <div class="card-image">
+                                    <figure class="image">
+                                        <a href="{{ url_for('movie_detail', movie_id=related_movie['id']) }}"><img src="http://image.tmdb.org/t/p/w500{{ related_movie['poster_path'] }}" alt="{{ related_movie['title'] }}"></a>
+                                    </figure>
+                                </div>
+                                <div class="card-content">
+                                    <p class="title is-6"><a href="{{ url_for('movie_detail', movie_id=related_movie['id']) }}">{{ related_movie['title'] }}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

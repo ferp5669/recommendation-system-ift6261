@@ -1,0 +1,47 @@
+{% include 'includes/navbar.html' %}
+
+<div class="columns is-centered is-multiline">
+    {% for movie in movies_list %}
+        <div class="column is-one-fifth">
+            <div class="card" style="background-color: #ffffff">
+                <div class="card-image">
+                    <figure class="image is-4by5">
+                        <img src="http://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}"
+                             alt="Poster for {{ movie['title'] }}">
+                    </figure>
+                </div>
+
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="Movie database">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">{{ movie['title'] }}</p>
+                            <p class="subtitle is-6">vote avg: {{ movie['vote_average'] }}, by {{ movie['vote_count'] }}
+                                users</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        {{ movie['overview'] |truncate(105) }}
+                        <br>
+                        <footer class="card-footer">
+                            <a href="" class="card-footer-item">Give rating</a>
+                            <a href="{{ url_for('movie_detail', movie_id=movie['id']) }}" class="card-footer-item">View details</a>
+
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="is-centered">
+    {{ pagination.links }}
+    {{ pagination.information }}
+</div>
+
